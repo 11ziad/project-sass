@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&family=Righteous&display=swap");
+.styleText {
+  background-image: linear-gradient(to right, #F29724, #c90519);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 35px;
+  font-family: "Pacifico", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}/*# sourceMappingURL=style.module.css.map */
