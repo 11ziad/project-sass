@@ -2,7 +2,7 @@
 .styleText {
   background-image: linear-gradient(to right, #F29724, #c90519);
   -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 35px;
   font-family: "Pacifico", serif;

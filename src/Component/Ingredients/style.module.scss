@@ -4,10 +4,21 @@
     background-image: linear-gradient(to right, #F29724 , #c90519 );
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size:35px;
+    font-size:30px;
     font-family: "Pacifico", serif;
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
     
+}
+
+.active{
+    background-color: rgba(251 146 60) !important;
+    color: white !important;
+    border: none;
+}
+.actives{
+    background-color: rgba(251 146 60) !important;
+    color: white !important;
+    border-radius: 50px;
 }

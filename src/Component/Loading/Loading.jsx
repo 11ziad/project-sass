@@ -9,10 +9,10 @@ export default function Loading() {
 <CirclesWithBar
   height="80vh"
   width="100"
-  color="#4fa94d"
-  outerCircleColor="#4fa94d"
-  innerCircleColor="#4fa94d"
-  barColor="#4fa94d"
+  color="#F29724"
+  outerCircleColor="#F29724"
+  innerCircleColor="#F29724"
+  barColor="#F29724"
   ariaLabel="circles-with-bar-loading"
   wrapperStyle={{}}
   wrapperClass={{}}
