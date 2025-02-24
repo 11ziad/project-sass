@@ -3,7 +3,7 @@ import style from '../Ingredients/style.module.scss'
 import axios from 'axios';
 import 'flowbite'
 import Loading from '../Loading/Loading';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 
 
@@ -39,7 +39,7 @@ export default function Ingredients() {
      setLoading(false)
     }catch(error){
       console.log(error); 
-      setLoading(false)     
+      setLoading(true)     
     }
 
   }
@@ -57,7 +57,22 @@ export default function Ingredients() {
   return <>
 
 
-       <h1 className={`${style.styleText} p-7 mt-5 md:mt-0`}>Learn, Cook, Eat Your Food</h1>
+       <h1 className={`${style.styleText} p-7 mt-6 md:mt-0`}>Learn, Cook, Eat Your Food</h1>
+       <div className="container">
+
+       <form class=" w-[100%] lg:w-[97%] mx-auto mb-6">   
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <NavLink to={'/search'}>
+        <input name='search' type="search" id="search" class="block w-full p-2.5 ps-10 lg:p-3.5 lg:ps-10 text-sm text-gray-900 border focus:outline-none border-gray-300 rounded-lg bg-gray-50" placeholder="Search Mockups, Logos..." required />
+        </NavLink>
+    </div>
+</form>
+       
    <button onClick={()=>setClose(true)} className='transition-all duration-1000 hover:bg-orange-500 md:hidden inline-flex items-center text-start w-full bg-orange-400 text-white rounded-lg py-1.5 ps-7'> 
     Select Category
     <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -66,11 +81,11 @@ export default function Ingredients() {
     </button>
 
         {close===true ?
-        <ul className=' transition-all duration-1000 w-full bg-white mt-7 rounded-2xl md:hidden text-center relative py-3' >
-          <i onClick={()=>{setClose(false)}} className="fa-solid fa-xmark text-gray-500 absolute top-0 text-xl hover:cursor-pointer -translate-y-6 hover:bg-slate-400 hover:text-white right-0 py-1 px-3 rounded-xl bg-gray-300"></i>
+        <ul className=' transition-all duration-1000 w-full bg-white mt-7 pt-8 rounded-2xl md:hidden text-center relative py-3' >
+          <i onClick={()=>{setClose(false)}} className="fa-solid fa-xmark text-gray-500  absolute top-0 text-3xl hover:cursor-pointer -translate-y-2  right-0 pt-1 mb-3 pe-2 rounded-xl "></i>
           {/* <span onClick={()=>{setClose(false)}} className=''> Close</span> */}
           
-          {namesCategory.slice(0,15).map((cat,indix)=> <div key={indix}>
+          {namesCategory.slice(0,15).map((cat,indix)=> <div onClick={()=>{setClose(false)}}  key={indix}>
     <li onClick={()=>{
           setCategory(cat.strIngredient)
         }}
@@ -124,6 +139,7 @@ export default function Ingredients() {
 )}
    </div> 
       }
+      </div>
 
 
 

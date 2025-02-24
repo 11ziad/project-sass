@@ -1,10 +1,9 @@
 import axios from 'axios'
 import style from './style.module.scss'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Loading from '../Loading/Loading';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {Helmet} from "react-helmet";
-
 export default function Meals() {
 
   const [category, setCategory] = useState('All')
@@ -12,6 +11,7 @@ export default function Meals() {
   const [loading, setLoading] = useState(false)
   const [allCategory, setAllCategory] = useState([])
   const [close, setClose] = useState(false)
+
   
   async function getNameMeals(){
     try{
@@ -35,7 +35,7 @@ export default function Meals() {
      setLoading(false)
     }catch(error){
       console.log(error); 
-      setLoading(false)     
+      setLoading(true)     
     }
 
   }
@@ -49,18 +49,25 @@ export default function Meals() {
     displayCategory(category)
   },[category])
 
-  
 
-
-
-
-   
 
   return <>
 
        <h1 className={`${style.styleText} p-7 mt-6 md:mt-0`}>Learn, Cook, Eat Your Food</h1>
 
    <div className="container">
+   <form class=" w-[100%] lg:w-[97%] mx-auto mb-6">   
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <NavLink to={'search'}>
+        <input name='search' type="search" id="search" class="block w-full p-2.5 ps-10 lg:p-3.5 lg:ps-10 text-sm text-gray-900 border focus:outline-none border-gray-300 rounded-lg bg-gray-50" placeholder="Search Mockups, Logos..." required />
+        </NavLink>
+    </div>
+</form>
   
    <button onClick={()=>setClose(true)} className='hover:bg-orange-500 md:hidden inline-flex items-center text-start w-full bg-orange-400 text-white rounded-lg py-1.5 ps-7'> 
     Select Category
@@ -70,11 +77,11 @@ export default function Meals() {
     </button>
 
         {close===true ?
-        <ul className=' w-full bg-white mt-7 rounded-md md:hidden text-center relative py-3' >
+        <ul className=' w-full bg-white mt-7 rounded-md md:hidden pt-8 text-center relative py-3' >
           {/* <span onClick={()=>{setClose(false)}} className='text-white absolute top-0 hover:cursor-pointer -translate-y-6 hover:bg-slate-400 right-0 py-1.5 px-3 rounded-xl bg-gray-400'> Close</span> */}
-          <i onClick={()=>{setClose(false)}} className="fa-solid fa-xmark text-gray-500 absolute top-0 text-xl hover:cursor-pointer -translate-y-6 hover:bg-slate-400 hover:text-white right-0 py-1 px-3 rounded-xl bg-gray-300"></i>
+          <i onClick={()=>{setClose(false)}} className="fa-solid fa-xmark text-gray-500 absolute top-0 text-3xl hover:cursor-pointer -translate-y-2  right-0 pt-1 mb-3 pe-2 rounded-xl "></i>
           
-          {namesCategory.map((cat)=> <div key={cat.idCategory}>
+          {namesCategory.map((cat)=> <div onClick={()=>{setClose(false)}}  key={cat.idCategory}>
     <li onClick={()=>{
           setCategory(cat.strCategory)
         }}
@@ -85,11 +92,11 @@ export default function Meals() {
         </ul>:null
         }
 
-
+     
 
 
       <ul  className=' hidden ps-7 pe-11 md:flex gap-y-3 flex-wrap'>
-    {loading === true ? <Loading></Loading>:<>
+    
         <li onClick={()=>{
           setCategory('All')
         }} className={`${category === 'All' && style.active} text-gray-600 hover:cursor-pointer bg-slate-50  border-gray-400 border me-2 focus:bg-black focus:text-white  font-medium rounded-[20px] text-md px-5 py-2.5 text-center`}>
@@ -102,18 +109,25 @@ export default function Meals() {
          className={`${category === cat.strCategory && style.active} text-gray-600 hover:cursor-pointer bg-slate-50  border-gray-400 border me-2 focus:bg-black focus:text-white  font-medium rounded-[20px] text-md px-5 py-2.5 text-center`}> 
           {cat.strCategory}</li>
         </div>)}
-        </>}
+ 
         </ul>
+        
+
 
         <Helmet>
                 <meta charSet="utf-8" />
                 <title>Meals</title>
             </Helmet>
-          <div className=' flex flex-wrap mt-20 gap-y-10'>
+
+
+{loading ? <Loading></Loading> :
+
+          <div className=' overflow-hidden flex flex-wrap mt-20 gap-y-10'>
                 {allCategory.map((data)=>
 
-          <div className="w-full m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
-              <div className=" pb-6 rounded-[30px] hover:shadow-lg hover:scale-105  hover:scale-y-105 bg-white transition-all">
+          <div className="w-full opacity-100 m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
+              <div
+              className=" pb-6 rounded-[30px] hover:shadow-lg hover:scale-105  hover:scale-y-105 bg-white transition-all">
             <div className="-translate-y-16 w-[150px] h-[150px] m-auto flex justify-center items-center rounded-[200%]">
               <img src={data.strMealThumb} className='object-cover rounded-[100%] h-28 w-56 group-hover:rotate-180' alt="" /> 
               </div>
@@ -133,6 +147,7 @@ export default function Meals() {
           )}
 
             </div>
+}
               </div>
     
 </>
