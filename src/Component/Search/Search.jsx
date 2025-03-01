@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './style.module.scss'
-import { Link, NavLink, useSubmit } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import axios from 'axios'
 import Loading from '../Loading/Loading'
+import { motion } from 'framer-motion'
 
 export default function Search() {
   const [meals, setMeals] = useState([])
@@ -11,7 +12,23 @@ export default function Search() {
 
     let inputRef =useRef()
 
-
+    const mealsAnimation = {
+      hidden : {
+        y : 30,
+        opacity : 0,
+      },
+      visible :{
+        y : 0, 
+        opacity : 1,
+        transition :{
+          duration : .1,
+          delay : .1 ,  
+        type : "spring",
+        stiffness : 10,
+        }
+      }
+    }
+    
 
    async function searche(){
 
@@ -57,18 +74,16 @@ export default function Search() {
                         <title>Search</title>
                     </Helmet>
 
-
-
-
-
-
-
                     {loading === true ? <Loading></Loading>:
         <div className=' flex flex-wrap justify-start mt-20 gap-y-10'>
       {meals?.map((data)=>
 
 <div className="w-full m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
-    <div className=" pb-6 rounded-[30px] hover:shadow-lg hover:scale-105  hover:scale-y-105 bg-white transition-all">
+    <motion.div 
+       variants={mealsAnimation}
+       initial = "hidden"  
+       animate = "visible"
+    className=" pb-6 rounded-[30px] hover:shadow-lg hover:scale-105  hover:scale-y-105 bg-white transition-all">
    <div className="-translate-y-16 w-[150px] h-[150px] m-auto flex justify-center items-center rounded-[200%]">
      <img src={data.strMealThumb} className='object-cover rounded-[100%] h-28 w-56 group-hover:rotate-180' alt="" /> 
      </div>
@@ -82,7 +97,7 @@ export default function Search() {
    <button className='pe-5 ps-5 pt-3 text-white pb-3 bg-green-600 rounded-[20px]'>View Recipe</button>
    </Link>    : <NotFound/>                   
    }
-   </div>
+   </motion.div>
      </div>
 
 )}

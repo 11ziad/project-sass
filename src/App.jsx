@@ -15,9 +15,9 @@ function App() {
 
   let routers = createBrowserRouter([
     {path  :'', element : <Layout/> , children : [
-    {index : true , element  :<Meals/>},
+    {path : 'meals' , element  :<Meals/>},
     {path : 'area' , element  :<Area/>},
-    {path : 'ingredient' , element  :<Ingredients/>},
+    {index : true , element  :<Ingredients/>},
     {path : 'search' , element  :<Search/>},
     {path : 'productDitailsAll/:id' , element  :<ProductDetails/>},
     {path : '*' , element  :<NotFound/>}

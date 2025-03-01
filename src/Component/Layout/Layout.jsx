@@ -9,7 +9,7 @@ export default function Layout() {
   
         <Sidbar></Sidbar>
 
-        <div className="p-2 sm:ml-64 bg-slate-100 min-h-svh">
+        <div className="p-2 sm:ml-64 bg-slate-100 min-h-svh overflow-hidden">
   <div className="p-2">
       <Outlet>  
       </Outlet>
