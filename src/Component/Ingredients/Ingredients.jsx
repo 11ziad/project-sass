@@ -87,17 +87,15 @@ export default function Ingredients() {
     }
     const mealsAnimation = {
       hidden : {
-        y : 30,
         opacity : 0,
       },
       visible :{
-        y : 0, 
         opacity : 1,
         transition :{
           duration : .1,
           delay : .1 ,  
         type : "spring",
-        stiffness : 10,
+        stiffness : 30,
         }
       }
     }

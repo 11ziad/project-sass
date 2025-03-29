@@ -11,25 +11,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false)
 
     let inputRef =useRef()
-
-    const mealsAnimation = {
-      hidden : {
-        y : 30,
-        opacity : 0,
-      },
-      visible :{
-        y : 0, 
-        opacity : 1,
-        transition :{
-          duration : .1,
-          delay : .1 ,  
-        type : "spring",
-        stiffness : 10,
-        }
-      }
-    }
     
-
    async function searche(){
 
         let vales = inputRef.current.value  
@@ -47,12 +29,24 @@ export default function Search() {
         }
       }
 
-
-
-      
       useEffect(()=>{
         inputRef.current.focus()
       },[])
+
+      const mealsAnimation = {
+        hidden : {
+          opacity : 0,
+        },
+        visible :{
+          opacity : 1,
+          transition :{
+            duration : .1,
+            delay : .1 ,  
+          type : "spring",
+          stiffness : 30,
+          }
+        }
+      }
 
   return <>
       <h1 className={`${style.styleText} p-7 mt-6 md:mt-0`}>Learn, Cook, Eat Your Food</h1>
@@ -77,7 +71,7 @@ export default function Search() {
                     {loading === true ? <Loading></Loading>:
         <div className=' flex flex-wrap justify-start mt-20 gap-y-10'>
       {meals?.map((data)=>
-
+      <Link to={`/productDitailsAll/${data.idMeal}`}>
 <div className="w-full m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
     <motion.div 
        variants={mealsAnimation}
@@ -93,12 +87,12 @@ export default function Search() {
      </div>
      {data.idMeal ?
      <Link to={`/productDitailsAll/${data.idMeal}`}>
-  
    <button className='pe-5 ps-5 pt-3 text-white pb-3 bg-green-600 rounded-[20px]'>View Recipe</button>
    </Link>    : <NotFound/>                   
    }
    </motion.div>
      </div>
+      </Link>
 
 )}
    </div> 

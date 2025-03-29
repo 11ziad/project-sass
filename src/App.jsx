@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router"
+import { lazy } from "react"
 import './App.css'
 import Layout from './Component/Layout/Layout'
 import NotFound from "./Component/NotFound/NotFound"
-import Meals from "./Component/Meals/Meals"
-import Area from "./Component/Area/Area"
-import Ingredients from "./Component/Ingredients/Ingredients"
+const Meals = lazy(()=> import('./Component/Meals/Meals'))
+const Area = lazy(()=> import("./Component/Area/Area"))
+const Ingredients = lazy(()=> import("./Component/Ingredients/Ingredients"))
 import ProductDetails from "./Component/productDetails/ProductDetails"
 import { Offline} from "react-detect-offline";
 import Search from "./Component/Search/Search"

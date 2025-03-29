@@ -43,19 +43,19 @@ export default function Sidbar() {
 
 <img src={logo} alt="" />
 <li>
-  <NavLink to={'meals'} className="flex ps-4 mb-4 items-center border hover:cursor-pointer hover:scale-105  transition-all  hover:scale-y-105 border-gray-300 p-2 text-gray-900 rounded-lg  group">
+  <NavLink  onClick={()=>{setClose(false)}}  to={'meals'} className="flex ps-4 mb-4 items-center border hover:cursor-pointer hover:scale-105  transition-all  hover:scale-y-105 border-gray-300 p-2 text-gray-900 rounded-lg  group">
     <i className="fa-solid fa-utensils" />
     <span className="flex-1 ms-3 whitespace-nowrap font-semibold">Meals</span>
   </NavLink>
 </li>
     <li>
-  <NavLink to={'/'} className="flex ps-4 mb-4 items-center border hover:cursor-pointer hover:scale-105 transition-all  hover:scale-y-105 border-gray-300 p-2 text-gray-900 rounded-lg  group">
+  <NavLink  onClick={()=>{setClose(false)}}  to={'/'} className="flex ps-4 mb-4 items-center border hover:cursor-pointer hover:scale-105 transition-all  hover:scale-y-105 border-gray-300 p-2 text-gray-900 rounded-lg  group">
   <i class="fa-solid fa-cookie-bite"></i>
     <span className="flex-1 ms-3 whitespace-nowrap font-semibold ">Ingredients</span>
   </NavLink>
 </li>
 <li>
-  <NavLink to={'area'} className="flex ps-4 items-center hover:scale-105 hover:cursor-pointer  hover:scale-y-105 transition-all  border border-gray-300 p-2 rounded-lg  group">
+  <NavLink  onClick={()=>{setClose(false)}}  to={'area'} className="flex ps-4 items-center hover:scale-105 hover:cursor-pointer  hover:scale-y-105 transition-all  border border-gray-300 p-2 rounded-lg  group">
   <i className="fa-solid fa-globe"></i>
     <span className="flex-1 ms-3 whitespace-nowrap font-semibold">Area</span>
   </NavLink>
@@ -78,7 +78,7 @@ animate ='visible'
 <li>
   <NavLink to={'meals'} className="flex ps-4 mb-4 items-center border hover:cursor-pointer hover:scale-105  transition-all  hover:scale-y-105 border-gray-300 p-2 text-gray-900 rounded-lg  group">
     <i className="fa-solid fa-utensils" />
-    <span className="flex-1 ms-3 whitespace-nowrap font-semibold">Meals</span>
+    <span  className="flex-1 ms-3 whitespace-nowrap font-semibold">Meals</span>
   </NavLink>
 </li>
     <li>
