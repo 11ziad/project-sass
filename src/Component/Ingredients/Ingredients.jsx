@@ -149,7 +149,7 @@ export default function Ingredients() {
        className={`${style.styleText} p-7 mt-6 md:mt-0`}>Learn, Cook, Eat Your Food</motion.h1>
        <div className="container">
 
-       <form class=" w-[100%] lg:w-[97%] mx-auto mb-6">   
+       <form className=" w-[100%] lg:w-[97%] mx-auto mb-6">   
     <motion.div
       variants={divAnimation}
       initial = "hidden"  

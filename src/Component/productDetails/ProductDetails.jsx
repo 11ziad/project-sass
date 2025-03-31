@@ -41,7 +41,7 @@ export default function ProductDetails() {
 
   {Loader ? <Loading></Loading>:<>
   
-  {detailsData.map((category)=><> <h1 className={`${style.styleMain} mt-5 text-orange-500`}>{category.strIngredient1}</h1>
+  {detailsData.map((category)=><> <h1 className={`${style.styleMain} mt-10  text-orange-500`}>{category.strIngredient1}</h1>
         <div className=" flex flex-wrap ">
         <div className=" lg:w-1/3 mt-10">
           <img src={category.strMealThumb} className=' w-full rounded-[30px]' alt={category.strIngredient1}  />
