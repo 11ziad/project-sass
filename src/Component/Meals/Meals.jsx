@@ -228,7 +228,7 @@ export default function Meals() {
 
 {loading ? <Loading></Loading> :
 
-          <div className=' overflow-hidden flex flex-wrap mt-20 gap-y-10'>
+          <div className=' flex flex-wrap mt-20 gap-y-10'>
                 {allCategory.map((data)=>
 
           <div className="w-full opacity-100 m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
@@ -248,7 +248,8 @@ export default function Meals() {
               <Link to={`/productDitailsAll/${data.idMeal}`}>
             
             <button className='pe-5 ps-5 pt-3 text-white pb-3 bg-green-600 rounded-[20px]'>View Recipe</button>
-            </Link>    : <NotFound/>                   
+            </Link>   
+             : <NotFound/>                   
             }
             </motion.div>
               </div>

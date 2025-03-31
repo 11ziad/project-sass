@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './style.module.scss'
-import { Link} from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import axios from 'axios'
 import Loading from '../Loading/Loading'
@@ -68,34 +68,36 @@ export default function Search() {
                         <title>Search</title>
                     </Helmet>
 
-                    {loading === true ? <Loading></Loading>:
-        <div className=' flex flex-wrap justify-start mt-20 gap-y-10'>
-      {meals?.map((data)=>
-      <Link to={`/productDitailsAll/${data.idMeal}`}>
-<div className="w-full m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
-    <motion.div 
-       variants={mealsAnimation}
-       initial = "hidden"  
-       animate = "visible"
-    className=" pb-6 rounded-[30px] hover:shadow-lg hover:scale-105  hover:scale-y-105 bg-white transition-all">
-   <div className="-translate-y-16 w-[150px] h-[150px] m-auto flex justify-center items-center rounded-[200%]">
-     <img src={data.strMealThumb} className='object-cover rounded-[100%] h-28 w-56 group-hover:rotate-180' alt="" /> 
-     </div>
-     <div className=" -translate-y-6">
-   <h2 className=' font-bold text-lg'>{data.strMeal.split(' ',2).join(' ')}</h2> 
-   <h2 className=' text-green-600'>{data.strArea}</h2>               
-     </div>
-     {data.idMeal ?
-     <Link to={`/productDitailsAll/${data.idMeal}`}>
-   <button className='pe-5 ps-5 pt-3 text-white pb-3 bg-green-600 rounded-[20px]'>View Recipe</button>
-   </Link>    : <NotFound/>                   
-   }
-   </motion.div>
-     </div>
-      </Link>
-
-)}
-   </div> 
-      }
+                 {loading ? <Loading></Loading> :
+                 
+                           <div className=' flex flex-wrap mt-20 gap-y-10'>
+                                 {meals?.map((data)=>
+                 
+                           <div className="w-full opacity-100 m-auto md:w-1/2 lg:w-1/4 p-3 text-center">
+                               <motion.div
+                                    variants={mealsAnimation}
+                                    initial = "hidden"
+                                    animate = "visible"
+                               className=" pb-6 rounded-[30px] hover:shadow-lg hover:scale-105  hover:scale-y-105 bg-white transition-all">
+                             <div className="-translate-y-16 w-[150px] h-[150px] m-auto flex justify-center items-center rounded-[200%]">
+                               <img src={data.strMealThumb} className='object-cover rounded-[100%] h-28 w-56 group-hover:rotate-180' alt="" /> 
+                               </div>
+                               <div className=" -translate-y-6">
+                             <h2 className=' font-bold text-lg'>{data.strMeal.split(' ',2).join(' ')}</h2> 
+                             <h2 className=' text-green-600'>{data.strArea}</h2>               
+                               </div>
+                               {data.idMeal ?
+                               <Link to={`/productDitailsAll/${data.idMeal}`}>
+                             
+                             <button className='pe-5 ps-5 pt-3 text-white pb-3 bg-green-600 rounded-[20px]'>View Recipe</button>
+                             </Link>    : <NotFound/>                   
+                             }
+                             </motion.div>
+                               </div>
+                 
+                           )}
+                 
+                             </div>
+                 }
   </>
 }
